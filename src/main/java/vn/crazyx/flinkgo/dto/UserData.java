@@ -6,6 +6,8 @@ import vn.crazyx.flinkgo.dao.User;
 import vn.crazyx.flinkgo.utilities.RandomUtils;
 
 public class UserData {
+    String userId;
+    
     AddressData address;
     
     Integer age;
@@ -30,6 +32,8 @@ public class UserData {
    
     public UserData(User user) {
         super();
+        this.setUserId(user.getId());
+        
         this.address = new AddressData();
         this.address.setAddress(user.getAddress());
         this.address.setLatitude(user.getLatitude());
@@ -132,5 +136,13 @@ public class UserData {
 
     public void setContactInfo(ContactInfo contactInfo) {
         this.contactInfo = contactInfo;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

@@ -21,6 +21,7 @@ public class AuthUser {
     public AuthUser(User user) {
         this.userId = user.getId();
         this.userName = user.getUserName();
+        this.userAvatar = user.getAvatar();
     }
 
     public AuthUser(String userId, String userName) {

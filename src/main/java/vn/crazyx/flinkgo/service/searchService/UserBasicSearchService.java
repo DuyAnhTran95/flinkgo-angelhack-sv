@@ -16,7 +16,8 @@ import vn.crazyx.flinkgo.service.user.AuthenticationUserService;
 @Service
 public class UserBasicSearchService implements UserSearchService {
     
-    private static final double GRID = 0.03;
+    private static final double GRID = 0.05;
+    private static final Integer AGE_RANGE = 1;
     
     @Autowired
     AuthenticationUserService authService;
@@ -44,6 +45,9 @@ public class UserBasicSearchService implements UserSearchService {
         Double upperLong = user.getLongitude() + grid;
         Double lowerLong = user.getLongitude() - grid;
         
-        return userRepo.findAllValidUser(lowerLat, upperLat, lowerLong, upperLong);
+        Integer lowerAge = user.getAge() - AGE_RANGE;
+        Integer upperAge = user.getAge() + AGE_RANGE;
+        
+        return userRepo.findAllValidUser(lowerLat, upperLat, lowerLong, upperLong, lowerAge, upperAge);
     }
 }

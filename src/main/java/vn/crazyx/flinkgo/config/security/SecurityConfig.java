@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.access.channel.ChannelProcessingFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import vn.crazyx.flinkgo.service.token.TokenService;
@@ -58,6 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout").invalidateHttpSession(false)
                 .logoutSuccessUrl("/")
             .and()
+            .addFilterBefore(new CORSFilter(), ChannelProcessingFilter.class)
             .addFilterBefore(new FlinkgoRefreshAuthenticationFilter("/auth", userService, tokenService), 
                     UsernamePasswordAuthenticationFilter.class)
             .addFilterBefore(new FlinkgoLoginAuthenticationFilter("/login", userService, tokenService), 

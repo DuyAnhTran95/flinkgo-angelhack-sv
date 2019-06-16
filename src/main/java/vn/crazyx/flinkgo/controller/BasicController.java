@@ -26,7 +26,7 @@ import vn.crazyx.flinkgo.service.searchService.UserSearchService;
 
 @RestController
 @RequestMapping("/")
-public class TestController {
+public class BasicController {
     Logger log = Logger.getLogger("TestController");
     
     @Autowired

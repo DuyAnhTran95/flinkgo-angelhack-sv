@@ -13,7 +13,8 @@ public interface UserRepository extends CrudRepository<User, String>,
     User findOneByRefreshToken(String token);
     
     @Query(nativeQuery = true, value = "select * from user where latitude between ?1 and ?2 and "
-            + "longitude between ?3 and ?4 limit 5")
-    List<User> findAllValidUser(double lowerLat, double upperLat, double lowerLong, double upperLong);
+            + "longitude between ?3 and ?4 and age between ?5 and ?6 limit 5")
+    List<User> findAllValidUser(double lowerLat, double upperLat, double lowerLong, double upperLong,
+            int lowerAge, int upperAge);
 
 }

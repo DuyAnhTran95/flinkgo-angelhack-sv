@@ -39,7 +39,7 @@ public class FixedChatProcessor implements MessageProcessingService {
         } else if (friendKeyword > findKeyword) {
             return RequestType.FRIEND;
         } else {
-            return null;
+            return RequestType.UNKOWN;
         }
     }
 }

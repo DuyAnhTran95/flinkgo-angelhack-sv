@@ -3,6 +3,8 @@ package vn.crazyx.flinkgo.dto;
 import vn.crazyx.flinkgo.dao.Mentor;
 
 public class MentorData {
+    private String mentorId;
+    
     String name;
     
     String organization;
@@ -19,6 +21,8 @@ public class MentorData {
 
     public MentorData(Mentor mentor) {
         super();
+        this.setMentorId(mentor.getId());
+        
         this.name = mentor.getName();
         this.organization = mentor.getOrganization();
         this.level = mentor.getLevel();
@@ -82,5 +86,13 @@ public class MentorData {
 
     public void setLevel(Integer level) {
         this.level = level;
+    }
+
+    public String getMentorId() {
+        return mentorId;
+    }
+
+    public void setMentorId(String mentorId) {
+        this.mentorId = mentorId;
     }
 }
